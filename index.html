@@ -1,0 +1,158 @@
+<!doctype html>
+<html ng-app="namesList">
+  <head>
+    <meta charset="utf-8">
+    <title>Net Net Calculator</title>
+    <link href="css/style.css" rel="stylesheet">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+		
+</head>
+
+  </head>
+  
+  <body>
+  <b>
+  This application is for educational and illustrative purposes only and should not be the basis for any investment.
+
+You should not make an investment unless you are prepared to sustain a total loss of the money you have invested plus any commission or other transaction charges.
+</b>
+<br><br><br>
+
+  
+  
+    <div ng-controller="TestCtrl" class="container-fluid"><h2>
+<div class="row">
+  <div class="col-md-3">Cash </div>
+  <div class="col-md-3"><input type="number" name="A" cols="100" rows="20" ng-model="title" placeholder="Enter words for Box A"></input></div>
+</div>
+<div class="row">
+  <div class="col-md-3">Net Receivables</div>
+  <div class="col-md-3"><input type="number" name="B" cols="100" rows="20" ng-model="title2" placeholder="Enter words for Box B"></input></div>
+</div>
+<div class="row">
+  <div class="col-md-3">Inventory</div>
+  <div class="col-md-3"><input type="number" name="C" cols="100" rows="20" ng-model="title3" placeholder="Enter words for Box B"></input></div>
+</div>
+<div class="row">
+  <div class="col-md-3">Total Liabilities</div>
+  <div class="col-md-3"><input type="number" name="D" cols="100" rows="20" ng-model="title4" placeholder="Enter words for Box B"></input></div>
+</div>
+<div class="row">
+  <div class="col-md-3">Preferred Stock</div>
+  <div class="col-md-3"><input type="number" name="E" cols="100" rows="20" ng-model="title5" placeholder="Enter words for Box B"></input></div>
+</div>
+<div class="row">
+  <div class="col-md-3">Stock Outstanding</div>
+  <div class="col-md-3"><input type="number" name="F" cols="100" rows="20" ng-model="title6" placeholder="Enter words for Box B"></input></div>
+</div>
+		</h2>
+		
+<br>    
+Cash total: {{title}}
+<br>    
+Receivables total: {{title2|receivables}}
+<br>    
+Inventory total: {{title3|inventory}}
+<br>    
+Liabilities + Preferred Stock: {{title4 + title5}}
+<br>    
+Shares Outstanding: {{title6}}
+<br>    
+Net Asset Value:
+{{(title + title2*.75 + title3*.5 - title4 - title5)}}
+<br>
+Net Asset Value Per Share:
+{{(title + title2*.75 + title3*.5 - title4 - title5)/title6}}
+<br>
+Net Asset Value Per Share with 66% margin of safety:
+{{((title + title2*.75 + title3*.5 - title4 - title5)/title6)*.66}}
+
+
+    </div>
+    
+    <!-- Vendor libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	
+
+    <script>
+    'use strict';
+    angular.module('namesList', [])
+      .filter('receivables', function() {	  
+		    return function(input) {
+			
+            return input*.75;
+        };
+      })
+	  
+	    .filter('inventory', function() {	  
+		    return function(input2) {
+			
+            return input2 * .5;
+        };
+	  })
+
+	  
+	  	    .filter('test', function() {	  
+		    return function(input2) {
+			
+            return "test";
+        };
+      })
+
+	  
+	  	    .filter('test', function() {	  
+		    return function(input2) {
+			
+            return "test";
+        };
+      })
+
+
+    
+    
+    </script>
+
+	<script>
+	var myModule = angular.module('myModule', []);
+	myModule.factory('serviceId', function() {
+     return function(input1, input2) {
+     return input1 +input2;
+     });
+	
+	</script>
+
+    <script>
+    'use strict';
+    (function(){
+      function TestCtrl($scope) {
+        $scope.title = 0;
+    	$scope.title2 = 0;
+    	$scope.title3 = 0;
+    	$scope.title4 = 0;
+		$scope.title5 = 0;
+		$scope.title6 = 0;
+		$scope.LiaPref = 0;
+		$scope.both = 0;
+		$scope.addData = function () {
+      
+  };
+      }
+      angular.module('namesList')
+        .controller('TestCtrl', TestCtrl);
+        
+    })()
+    </script> 
+
+
+
+  </body>
+</html>
