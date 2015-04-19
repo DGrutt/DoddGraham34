@@ -12,7 +12,7 @@ http://grahamdodd.singularitybookreviews.com/
 The formula is :
 using the formulation by Graham and Dodd (1934)
 
-Cash + .75*Net receivables + .5*inventory - (total liabilities + preferred stock) /shares outstanding
+Cash + (.75*Net receivables) + (.5*inventory) - (total liabilities + preferred stock) /shares outstanding
 
 This formula was cited in the following paper:
 
